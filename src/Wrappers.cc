@@ -1,14 +1,25 @@
 #include "Wrappers.h"
 
-cv::Mat wrappedImRead(std::string filename)
+cv::Mat 
+wrapped_imread(std::string filename)
 {
   return cv::imread(filename);
 }
 
 void 
-wrappedImWrite(std::string filename, cv::Mat mat)
+wrapped_imwrite(std::string filename, cv::Mat mat)
 {
   cv::imwrite(filename, mat);
+}
+
+cv::Mat
+wrapped_imdecode(Rcpp::RawVector rawData)
+{
+  std::vector<uchar> bytes;
+  bytes.resize(rawData.size());
+  std::copy(rawData.begin(), rawData.end(), bytes.begin());
+  cv::Mat image = cv::imdecode(bytes, CV_LOAD_IMAGE_COLOR);
+  return image;
 }
 
 ///////////////////////////////////////
@@ -39,5 +50,7 @@ wrappedCascadeClassifier::detectMultiScale(cv::Mat image)
   internal.detectMultiScale(image, objects, scaleFactor);
   return objects;
 }
+
+
 
 

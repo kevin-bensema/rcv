@@ -1,6 +1,8 @@
 #ifndef Wrappers_h
 #define Wrappers_h
 
+#include <Rcpp.h>
+
 // open CV includes.
 #include <opencv2/opencv.hpp>
 #include <opencv2/objdetect/objdetect.hpp>
@@ -23,8 +25,9 @@ private:
   float scaleFactor;
 };
 
-cv::Mat wrappedImRead(std::string filename);
-void wrappedImWrite(std::string filename, cv::Mat mat);
+cv::Mat wrapped_imread(std::string filename);
+void wrapped_imwrite(std::string filename, cv::Mat mat);
+cv::Mat wrapped_imdecode(Rcpp::RawVector);
 
 #endif
 
