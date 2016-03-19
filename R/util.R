@@ -1,8 +1,15 @@
-# utility functions for the object-detect OpenCV framework
 
-# convert a cv::Rect to a named R list.
-cvrect.to.rlist <- function(cvrect)
+OpenCVRectToRList <- function(opencv.rect)
 {
+  # Converts an OpenCV Wrapped C++ Rect to a named R list
+  #
+  # Args:
+  #   opencv.rect: a C++ wrapped cv::Rect object to be converted to a named
+  #                R list storing the x, y, width, and height fields.
+  # 
+  # Returns:
+  #   A named list with four elements: the argument rectangle's x, and y
+  #   coordinates for it's lower-left corner, along with the width and height
   output <- list()
   output$x = cvrect$x
   output$y = cvrect$y
