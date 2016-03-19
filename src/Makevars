@@ -1,4 +1,5 @@
-PKG_LIBS = -lopencv_core \
+PKG_LIBS = -L/usr/local/lib \
+           -lopencv_core \
            -lopencv_calib3d \
            -lopencv_features2d \
            -lopencv_flann \
